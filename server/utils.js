@@ -14,4 +14,30 @@ async function sendAlertToTelegram(message) {
 
 	return response.data.ok;
 }
-module.exports = { sendAlertToTelegram };
+async function getHeartRate(data) {
+	let flag = false;
+	let indexForTimeGaps = [];
+	for (let i = 0; i < data.length; i++) {
+		if (flag) {
+			if (data[i] < 750) {
+				flag = false;
+			}
+			continue;
+		}
+		if (data[i] > 750) {
+			flag = true;
+			indexForTimeGaps.push(i);
+		}
+	}
+	console.log(indexForTimeGaps);
+	let gapSum = 0;
+	let gapCounts = 0;
+	for (let i = 0; i < indexForTimeGaps.length - 1; i++) {
+		gapCounts++;
+		gapSum += indexForTimeGaps[i + 1] - indexForTimeGaps[i];
+	}
+	let averageGap = gapSum / gapCounts;
+
+	return parseInt(60000 / averageGap);
+}
+module.exports = { sendAlertToTelegram, getHeartRate };

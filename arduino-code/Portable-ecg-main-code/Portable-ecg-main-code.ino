@@ -57,6 +57,7 @@ void loop() {
       arrToString += ",";
     }    
     String data = "{\"arr\":\"" + arrToString + "\"}";
+    Serial.println(data);
     // Data Sending to server
     int httpCode = http.POST(data);
 

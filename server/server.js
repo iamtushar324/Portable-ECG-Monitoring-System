@@ -10,7 +10,7 @@ const io = new Server(server, {
 	},
 });
 const { a } = require("./a.js");
-const { sendAlertToTelegram } = require("./utils.js");
+const { sendAlertToTelegram, getHeartRate } = require("./utils.js");
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -55,7 +55,7 @@ app.post("/", (req, res) => {
 
 	//Generate random number
 	io.local.emit("ecg", response);
-	const heartRate = Math.floor(Math.random() * (100 - 60 + 1) + 60);
+	const heartRate = getHeartRate(aa);
 	io.local.emit("heartRate", heartRate);
 	res.send({ isSuccess: 1, message: "OK" });
 });
