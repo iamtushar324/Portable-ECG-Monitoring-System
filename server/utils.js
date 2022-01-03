@@ -14,7 +14,7 @@ async function sendAlertToTelegram(message) {
 
 	return response.data.ok;
 }
-async function getHeartRate(data) {
+function getHeartRate(data) {
 	let flag = false;
 	let indexForTimeGaps = [];
 	for (let i = 0; i < data.length; i++) {
