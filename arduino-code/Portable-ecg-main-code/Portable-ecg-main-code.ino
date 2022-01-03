@@ -1,7 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-#define SERVER_IP "192.168.139.139:4204"
+#define SERVER_IP "13.233.89.212:4204"
 
 #ifndef STASSID
 #define STASSID "Pul"
