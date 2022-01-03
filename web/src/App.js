@@ -9,7 +9,7 @@ function App() {
 	const [heartRate, setHeartRate] = useState(70);
 	useEffect(() => {
 		async function socketSetup() {
-			const socket = await io("http://localhost:4204");
+			const socket = await io("https://gocomet.tushar-bhardwaj.tech:4204/");
 			socket.on("heartRate", (data) => {
 				console.log(typeof data);
 				if (typeof data === "number") {

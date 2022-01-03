@@ -10,6 +10,9 @@ const io = new Server(server, {
 	},
 });
 const { a } = require("./a.js");
+const { sendAlertToTelegram } = require("./utils.js");
+const dotenv = require("dotenv");
+dotenv.config();
 
 app.use(require("body-parser").json());
 
@@ -20,13 +23,13 @@ app.get("/:offset", (req, res) => {
 	// let response = req.body.arr.split(",");
 	let response = [];
 	let min = 1024;
-	for (let i = 0; i < 1000; i++) {
-		if (min > a[i * offset]) {
-			min = a[i * offset];
+	for (let i = offset * 2000; i < 2000 + offset * 2000; i++) {
+		if (min > a[i]) {
+			min = a[i];
 		}
 	}
-	for (let i = 0; i < 1000; i++) {
-		response.push({ v: a[i * offset] - min + 100 });
+	for (let i = offset * 2000; i < 2000 + offset * 2000; i++) {
+		response.push({ v: a[i] - min + 100 });
 	}
 
 	//Generate random number
