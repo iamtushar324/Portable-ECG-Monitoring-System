@@ -9,7 +9,7 @@ export default function LiveECGChart({ data }) {
 			<Heading>Live ECG</Heading>
 
 			<LineChart width={width} height={400} data={data}>
-				<Line type="monotone" dataKey="v" stroke="#8884d8" dot={<></>} />
+				<Line type="monotone" dataKey="v" stroke="#fff" dot={<></>} />
 				<CartesianGrid stroke="#444" />
 			</LineChart>
 		</MainWrapper>

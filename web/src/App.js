@@ -28,7 +28,7 @@ function App() {
 	}, []);
 	return (
 		<StyledApp>
-			<Heading>Tushar's Live Health Monitoring</Heading>
+			<Heading>Portable ECG Monitoring</Heading>
 			<HeartRate data={heartRate} />
 			<LiveECGChart data={ECGData} />
 		</StyledApp>

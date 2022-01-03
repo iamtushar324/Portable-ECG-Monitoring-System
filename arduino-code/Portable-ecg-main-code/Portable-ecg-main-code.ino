@@ -1,14 +1,14 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-#define SERVER_IP "192.168.43.116:4204"
+#define SERVER_IP "192.168.139.139:4204"
 
 #ifndef STASSID
-#define STASSID "SSID"
-#define STAPSK  "********"
+#define STASSID "Pul"
+#define STAPSK  "1234567890"
 #endif
 
-int arr[10000];
+int arr[2000];
 
 void setup() {
 
@@ -46,13 +46,13 @@ void loop() {
     // start connection and send HTTP header and body
 
     //Read and insert module value in a array for 10000 size , equivalent to 10 secs
-    for(int i = 0 ; i < 10000 ;i++){
+    for(int i = 0 ; i < 2000 ;i++){
       arr[i] = analogRead(A0);
       delay(1);
     }
     // Converting Arr values to a string to send back to server
     String arrToString = "";
-    for(int i = 0 ; i < 10000 ;i++){
+    for(int i = 0 ; i < 2000 ;i++){
       arrToString += String(arr[i]);
       arrToString += ",";
     }    
