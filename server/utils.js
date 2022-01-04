@@ -37,7 +37,12 @@ function getHeartRate(data) {
 		gapSum += indexForTimeGaps[i + 1] - indexForTimeGaps[i];
 	}
 	let averageGap = gapSum / gapCounts;
+	if (averageGap > 120) {
+		sendAlertToTelegram(`Alert , Your Patient's Heart Rate is ${averageGap}`);
+	}
 
-	return parseInt(60000 / averageGap);
+	return parseInt(60000 / averageGap) < 200
+		? parseInt(60000 / averageGap)
+		: 200;
 }
 module.exports = { sendAlertToTelegram, getHeartRate };
